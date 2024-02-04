@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <form onsubmit="return formValidation()">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" id="na"></td>
+                <td id="name"></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="" id="em"></td>
+                <td id="email"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="" id="pw"></td>
+                <td id="password"></td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td><input type="number" name="" id="phn"></td>
+                <td id="phone"></td>
+            </tr>
+            <tr>
+                <td>DOB</td>
+                <td><input type="date" name="" id="dob" required></td>
+                <td id="dateof"></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <center><input type="submit" value="Submit"></center>
+                </td>
+            </tr>
+        </form>
+    </table>
+    <script>
+        function formValidation() {
+
+            var name = document.getElementById('na').value;
+            var email = document.getElementById('em').value;
+            var password = document.getElementById('pw').value;
+            var phone = document.getElementById('phn').value;
+            var dob = document.getElementById('dob').value;
+
+
+            var nameRegex = /^[a-zA-Z]{3,}$/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$/;
+            var phoneRegex = /^\d{10}$/;
+
+
+            if (!nameRegex.test(name)) {
+                document.getElementById('name').innerHTML = "Invalid";
+                
+            } else {
+                document.getElementById('name').innerHTML= "Valid";
+            }
+
+            if (!emailRegex.test(email)) {
+                document.getElementById('email').innerHTML = "Invalid";
+                
+            } else {
+                document.getElementById('email').innerHTML = "Valid";
+            }
+            if (!passwordRegex.test(password)) {
+                document.getElementById('password').innerHTML = "Invalid";
+                
+            } else {
+                document.getElementById('password').innerHTML = "Valid";
+            }
+
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phone').innerHTML = "Invalid"
+                
+            } else {
+                document.getElementById('phone').innerHTML = "Valid";
+            }
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
